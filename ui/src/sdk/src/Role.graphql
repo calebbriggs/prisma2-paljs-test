@@ -3,6 +3,12 @@ fragment RoleFields on Role {
   createdAt
   updatedAt
   name
+  users {
+    ...User
+  }
+  permissions {
+    ...Permission
+  }
 }
 
 fragment Role on Role {
@@ -22,7 +28,13 @@ query findManyRole(
   $skip: Int
   $take: Int
 ) {
-  findManyRole(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+  findManyRole(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    skip: $skip
+    take: $take
+  ) {
     ...Role
   }
 }
@@ -34,7 +46,13 @@ query findManyRoleCount(
   $skip: Int
   $take: Int
 ) {
-  findManyRoleCount(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take)
+  findManyRoleCount(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    skip: $skip
+    take: $take
+  )
 }
 
 mutation createOneRole($data: RoleCreateInput!) {
@@ -61,7 +79,10 @@ mutation deleteManyRole($where: RoleWhereInput) {
   }
 }
 
-mutation updateManyRole($where: RoleWhereInput, $data: RoleUpdateManyMutationInput!) {
+mutation updateManyRole(
+  $where: RoleWhereInput
+  $data: RoleUpdateManyMutationInput!
+) {
   updateManyRole(where: $where, data: $data) {
     count
   }

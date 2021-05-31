@@ -18,10 +18,5 @@ const resolvers: Resolvers = {
       return prisma.entityLog.aggregate(args)
     },
   },
-  Mutation: {
-    upsertOneEntityLog: async (_parent, args, { prisma }) => {
-      return prisma.entityLog.upsert(args)
-    },
-  },
 }
 export default resolvers

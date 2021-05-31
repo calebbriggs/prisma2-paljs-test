@@ -13,6 +13,6 @@
     "strict": true,
     "lib": ["esnext.asynciterable"]
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "ui/sdk/generated"],
   "exclude": ["node_modules", ".vscode", "/node_modules", "dist"]
 }

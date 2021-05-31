@@ -19,20 +19,11 @@ module.exports = {
     generator: "sdl",
     output: "./src/graphql",
     onDelete: true,
-    excludeQueriesAndMutationsByModel: {
-      EntityLog: [
-        "createOne",
-        "updateOne",
-        // "upsertOne",
-        "deleteOne",
-        "updateMany",
-        "deleteMany",
-      ],
-    },
+    excludeModels: [{ name: "EntityLog", mutations: true }],
   },
   frontend: {
     graphql: {
-      output: "src/uiSdk",
+      output: "ui/src/sdk/src",
       excludeModels: [{ name: "EntityLog", mutations: true }],
     },
   },

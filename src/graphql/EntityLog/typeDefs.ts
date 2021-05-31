@@ -46,11 +46,4 @@ export default gql`
       take: Int
     ): AggregateEntityLog
   }
-  type Mutation {
-    upsertOneEntityLog(
-      where: EntityLogWhereUniqueInput!
-      create: EntityLogCreateInput!
-      update: EntityLogUpdateInput!
-    ): EntityLog
-  }
 `

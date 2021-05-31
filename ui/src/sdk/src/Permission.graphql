@@ -22,13 +22,7 @@ query findManyPermission(
   $skip: Int
   $take: Int
 ) {
-  findManyPermission(
-    where: $where
-    orderBy: $orderBy
-    cursor: $cursor
-    skip: $skip
-    take: $take
-  ) {
+  findManyPermission(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...Permission
   }
 }
@@ -40,13 +34,7 @@ query findManyPermissionCount(
   $skip: Int
   $take: Int
 ) {
-  findManyPermissionCount(
-    where: $where
-    orderBy: $orderBy
-    cursor: $cursor
-    skip: $skip
-    take: $take
-  )
+  findManyPermissionCount(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take)
 }
 
 mutation createOnePermission($data: PermissionCreateInput!) {
@@ -55,10 +43,7 @@ mutation createOnePermission($data: PermissionCreateInput!) {
   }
 }
 
-mutation updateOnePermission(
-  $where: PermissionWhereUniqueInput!
-  $data: PermissionUpdateInput!
-) {
+mutation updateOnePermission($where: PermissionWhereUniqueInput!, $data: PermissionUpdateInput!) {
   updateOnePermission(where: $where, data: $data) {
     ...Permission
   }
@@ -76,10 +61,7 @@ mutation deleteManyPermission($where: PermissionWhereInput) {
   }
 }
 
-mutation updateManyPermission(
-  $where: PermissionWhereInput
-  $data: PermissionUpdateManyMutationInput!
-) {
+mutation updateManyPermission($where: PermissionWhereInput, $data: PermissionUpdateManyMutationInput!) {
   updateManyPermission(where: $where, data: $data) {
     count
   }

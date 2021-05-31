@@ -1,7 +1,7 @@
 schema: http://localhost:4010
-documents: ./src/uiSdk/src/**/*.graphql
+documents: ./ui/src/sdk/src/**/*.graphql
 generates:
-  ./src/uiSdk/generated/index.ts:
+  ./ui/src/sdk/generated/index.ts:
     plugins:
       - typescript
       - typescript-operations

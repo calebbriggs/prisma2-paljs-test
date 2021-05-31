@@ -387,7 +387,6 @@ export type Mutation = {
   upsertOnePermission?: Maybe<Permission>;
   deleteManyPermission?: Maybe<BatchPayload>;
   updateManyPermission?: Maybe<BatchPayload>;
-  upsertOneEntityLog?: Maybe<EntityLog>;
 };
 
 
@@ -524,13 +523,6 @@ export type MutationDeleteManyPermissionArgs = {
 export type MutationUpdateManyPermissionArgs = {
   where?: Maybe<PermissionWhereInput>;
   data?: Maybe<PermissionUpdateManyMutationInput>;
-};
-
-
-export type MutationUpsertOneEntityLogArgs = {
-  where: EntityLogWhereUniqueInput;
-  create: EntityLogCreateInput;
-  update: EntityLogUpdateInput;
 };
 
 export type NestedBoolFilter = {
@@ -2544,6 +2536,13 @@ export type UpdateManyPostMutation = (
 export type RoleFieldsFragment = (
   { __typename?: 'Role' }
   & Pick<Role, 'id' | 'createdAt' | 'updatedAt' | 'name'>
+  & { users: Array<(
+    { __typename?: 'User' }
+    & UserFragment
+  )>, permissions: Array<(
+    { __typename?: 'Permission' }
+    & PermissionFragment
+  )> }
 );
 
 export type RoleFragment = (
@@ -2799,19 +2798,6 @@ export const EntityLogFragmentDoc = `
   ...EntityLogFields
 }
     ${EntityLogFieldsFragmentDoc}`;
-export const PermissionFieldsFragmentDoc = `
-    fragment PermissionFields on Permission {
-  id
-  createdAt
-  updatedAt
-  name
-}
-    `;
-export const PermissionFragmentDoc = `
-    fragment Permission on Permission {
-  ...PermissionFields
-}
-    ${PermissionFieldsFragmentDoc}`;
 export const PostFieldsFragmentDoc = `
     fragment PostFields on Post {
   id
@@ -2841,24 +2827,44 @@ export const PostFragmentDoc = `
 }
     ${PostFieldsFragmentDoc}
 ${UserFieldsFragmentDoc}`;
-export const RoleFieldsFragmentDoc = `
-    fragment RoleFields on Role {
+export const UserFragmentDoc = `
+    fragment User on User {
+  ...UserFields
+}
+    ${UserFieldsFragmentDoc}`;
+export const PermissionFieldsFragmentDoc = `
+    fragment PermissionFields on Permission {
   id
   createdAt
   updatedAt
   name
 }
     `;
+export const PermissionFragmentDoc = `
+    fragment Permission on Permission {
+  ...PermissionFields
+}
+    ${PermissionFieldsFragmentDoc}`;
+export const RoleFieldsFragmentDoc = `
+    fragment RoleFields on Role {
+  id
+  createdAt
+  updatedAt
+  name
+  users {
+    ...User
+  }
+  permissions {
+    ...Permission
+  }
+}
+    ${UserFragmentDoc}
+${PermissionFragmentDoc}`;
 export const RoleFragmentDoc = `
     fragment Role on Role {
   ...RoleFields
 }
     ${RoleFieldsFragmentDoc}`;
-export const UserFragmentDoc = `
-    fragment User on User {
-  ...UserFields
-}
-    ${UserFieldsFragmentDoc}`;
 export const FindUniqueEntityLogDocument = `
     query findUniqueEntityLog($where: EntityLogWhereUniqueInput!) {
   findUniqueEntityLog(where: $where) {
