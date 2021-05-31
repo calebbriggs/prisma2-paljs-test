@@ -23,6 +23,7 @@
     "apollo-server": "^2.25.0",
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",
+    "graphql-request": "^3.4.0",
     "react-query": "^3.16.0"
   },
   "nodemonConfig": {
