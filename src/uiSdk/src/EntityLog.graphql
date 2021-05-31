@@ -1,0 +1,41 @@
+fragment EntityLogFields on EntityLog {
+  id
+  createdAt
+  updatedAt
+  model
+  changes
+  action
+  entityId
+}
+
+fragment EntityLog on EntityLog {
+  ...EntityLogFields
+}
+
+query findUniqueEntityLog($where: EntityLogWhereUniqueInput!) {
+  findUniqueEntityLog(where: $where) {
+    ...EntityLog
+  }
+}
+
+query findManyEntityLog(
+  $where: EntityLogWhereInput
+  $orderBy: [EntityLogOrderByInput!]
+  $cursor: EntityLogWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyEntityLog(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    ...EntityLog
+  }
+}
+
+query findManyEntityLogCount(
+  $where: EntityLogWhereInput
+  $orderBy: [EntityLogOrderByInput!]
+  $cursor: EntityLogWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyEntityLogCount(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take)
+}

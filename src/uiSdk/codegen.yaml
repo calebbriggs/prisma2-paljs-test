@@ -1,0 +1,10 @@
+schema: http://localhost:4010
+documents: ./src/uiSdk/src/**/*.graphql
+generates:
+  ./src/uiSdk/generated/index.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      fetcher: graphql-request

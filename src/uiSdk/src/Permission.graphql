@@ -1,0 +1,86 @@
+fragment PermissionFields on Permission {
+  id
+  createdAt
+  updatedAt
+  name
+}
+
+fragment Permission on Permission {
+  ...PermissionFields
+}
+
+query findUniquePermission($where: PermissionWhereUniqueInput!) {
+  findUniquePermission(where: $where) {
+    ...Permission
+  }
+}
+
+query findManyPermission(
+  $where: PermissionWhereInput
+  $orderBy: [PermissionOrderByInput!]
+  $cursor: PermissionWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyPermission(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    skip: $skip
+    take: $take
+  ) {
+    ...Permission
+  }
+}
+
+query findManyPermissionCount(
+  $where: PermissionWhereInput
+  $orderBy: [PermissionOrderByInput!]
+  $cursor: PermissionWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyPermissionCount(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    skip: $skip
+    take: $take
+  )
+}
+
+mutation createOnePermission($data: PermissionCreateInput!) {
+  createOnePermission(data: $data) {
+    ...Permission
+  }
+}
+
+mutation updateOnePermission(
+  $where: PermissionWhereUniqueInput!
+  $data: PermissionUpdateInput!
+) {
+  updateOnePermission(where: $where, data: $data) {
+    ...Permission
+  }
+}
+
+mutation deleteOnePermission($where: PermissionWhereUniqueInput!) {
+  deleteOnePermission(where: $where) {
+    ...Permission
+  }
+}
+
+mutation deleteManyPermission($where: PermissionWhereInput) {
+  deleteManyPermission(where: $where) {
+    count
+  }
+}
+
+mutation updateManyPermission(
+  $where: PermissionWhereInput
+  $data: PermissionUpdateManyMutationInput!
+) {
+  updateManyPermission(where: $where, data: $data) {
+    count
+  }
+}

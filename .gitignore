@@ -1,0 +1,16 @@
+dist
+node_modules
+*/node_module
+secrets.js
+*.env
+prod.env
+firebase*.json
+services/firebase/Firebase_Admin_Key*.json
+deploy.yaml
+k8s/prisma/prisma-config-map.yaml
+k8s/prisma/prod/prisma-config-map.yaml
+*prisma-config-map.yaml
+*.orig
+.zhsrc
+.DS_Store
+yarn-error.log

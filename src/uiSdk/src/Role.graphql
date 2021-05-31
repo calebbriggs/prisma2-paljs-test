@@ -1,0 +1,68 @@
+fragment RoleFields on Role {
+  id
+  createdAt
+  updatedAt
+  name
+}
+
+fragment Role on Role {
+  ...RoleFields
+}
+
+query findUniqueRole($where: RoleWhereUniqueInput!) {
+  findUniqueRole(where: $where) {
+    ...Role
+  }
+}
+
+query findManyRole(
+  $where: RoleWhereInput
+  $orderBy: [RoleOrderByInput!]
+  $cursor: RoleWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyRole(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
+    ...Role
+  }
+}
+
+query findManyRoleCount(
+  $where: RoleWhereInput
+  $orderBy: [RoleOrderByInput!]
+  $cursor: RoleWhereUniqueInput
+  $skip: Int
+  $take: Int
+) {
+  findManyRoleCount(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take)
+}
+
+mutation createOneRole($data: RoleCreateInput!) {
+  createOneRole(data: $data) {
+    ...Role
+  }
+}
+
+mutation updateOneRole($where: RoleWhereUniqueInput!, $data: RoleUpdateInput!) {
+  updateOneRole(where: $where, data: $data) {
+    ...Role
+  }
+}
+
+mutation deleteOneRole($where: RoleWhereUniqueInput!) {
+  deleteOneRole(where: $where) {
+    ...Role
+  }
+}
+
+mutation deleteManyRole($where: RoleWhereInput) {
+  deleteManyRole(where: $where) {
+    count
+  }
+}
+
+mutation updateManyRole($where: RoleWhereInput, $data: RoleUpdateManyMutationInput!) {
+  updateManyRole(where: $where, data: $data) {
+    count
+  }
+}
