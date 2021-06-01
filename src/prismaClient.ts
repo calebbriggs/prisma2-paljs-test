@@ -14,10 +14,7 @@ export class Prisma extends PrismaClient {
     await prismaDelete.onDelete(args);
   }
 }
-export interface Context {
-  user: string;
-  prisma: Prisma | any;
-}
+
 export const prisma = new Prisma();
 const crudOperations: Record<string, boolean> = {
   create: true,

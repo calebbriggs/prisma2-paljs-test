@@ -7,9 +7,7 @@ export default function Test() {
   });
 
   return isFetched ? (
-    data?.findManyRole.map(({ name }) => {
-      return <div>{name}</div>;
-    })
+    <pre>{JSON.stringify(data?.findManyRole, null, 2)}</pre>
   ) : (
     <div>Loading</div>
   );
