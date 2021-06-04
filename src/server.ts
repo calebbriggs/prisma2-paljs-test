@@ -3,8 +3,7 @@ import { schema } from "./schema";
 import { PrismaSelect } from "@paljs/plugins";
 import { applyMiddleware } from "graphql-middleware";
 import { GraphQLResolveInfo } from "graphql";
-import { createContext } from "./context";
-import { Context } from "./prismaClient";
+import { createContext, Context } from "./context";
 
 const middleware = async (
   resolve: any,
